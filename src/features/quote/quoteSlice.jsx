@@ -5,7 +5,7 @@ import axios from 'axios';
 export const fetchRandomQuote = createAsyncThunk(
   'quote/fetchRandomQuote',
   async () => {
-    const response = await axios.get('https://api.quotable.io/random');
+    const response = await axios.get('https://dummyjson.com/quotes/random');
     return response.data;
   }
 );
@@ -26,7 +26,7 @@ const quoteSlice = createSlice({
       })
       .addCase(fetchRandomQuote.fulfilled, (state, action) => {
         state.status = 'succeeded';
-        state.quote = action.payload.content;
+        state.quote = action.payload.quote;
         state.author = action.payload.author;
       })
       .addCase(fetchRandomQuote.rejected, (state, action) => {
